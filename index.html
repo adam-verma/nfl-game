@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- Added link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- Added a link to our external stylesheet-->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="jumbotron">
+        <h1 class="text-center">NFL Scoring Game</h1>
+        <h4 class="text-center">Reach a 100 pts with these NFL players!</h4>
+    </div>
+    <div class="container">
+        <div class="row">
+            <!-- Score Card -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <h3 class="card-header">Scoresheet</h3>
+                    <div class="card-body">
+                        <h1 id="target-score">Target Score:</h1>
+                        <h1 id="player-score">Player Score</h1>
+                        <h1 id="wins-losses">Player Wins and Losses</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card">
+            <h3 class="card-header">Choose your player</h3>
+            <div class="card-body">
+                <button id="button" class="qb player-button" value="4"><img
+                        src="./assets/images/texans-qb.png"></button>
+                <button id="button" class="wr player-button" value="6"><img
+                        src="./assets/images/texans-wr.png"></button>
+                <button id="button" class="rb player-button" value="7"><img
+                        src="./assets/images/texans-rb.png"></button>
+                <button id="button" class="k player-button" value="2"><img
+                        src="./assets/images/texans-k.png"></button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Displaying 4 clicked items as buttons
+            // Shows a target score at the start of the game
+            // Assigns a value to each button 
+            // Adds the value of the item to a score coutner
+            // User loses because they went over target score 
+            // User wins because target score = player score
+            // Game resets leaving the value for target score and items
+            // Player score resets to zero
+            // Total wins/losses are NOT reset 
+
+            // Define the variables
+            const target_score = 120
+            let player_score = 0
+            let total_wins
+
+            // Click functions for each button 
+            $(".player-button").on("click", function () {
+                // Assign a value of button to a new variable
+                let button_pts = parseInt($(this).attr("value"));
+                console.log(button_pts)
+                // 
+                player_score += button_pts;
+                if (player_score === target_score) {
+                    alert("Winner!")
+                    total_wins++ 
+                } else if (player_score >= target_score) {
+                    alert("Loser")
+                    total_wins--
+                }
+            });
+            function reset() {
+                player_score = 0;
+                
+                }
+            });
+    </script>
+</body>
+
+</html>
