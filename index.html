@@ -26,11 +26,12 @@
             <!-- Score Card -->
             <div class="col-lg-6">
                 <div class="card">
-                    <h3 class="card-header">Scoresheet</h3>
+                    <h3 class="card-header"></h3>
                     <div class="card-body">
-                        <h1 id="target-score">Target Score:</h1>
-                        <h1 id="player-score">Player Score</h1>
-                        <h1 id="wins-losses">Player Wins and Losses</h1>
+                        <h1>Target Score: <span id="target-score"></span></h1>
+                        <h1>Player Score: <span id="player-score"></span></h1>
+                        <h1>Total Wins: <span id="wins"></span></h1>
+                        <h1>Total Losses: <span id="losses"></span></h1>
                     </div>
                 </div>
             </div>
@@ -39,55 +40,21 @@
     <div class="col-lg-4">
         <div class="card">
             <h3 class="card-header">Choose your player</h3>
-            <div class="card-body">
-                <button id="button" class="qb player-button" value="4"><img
-                        src="./assets/images/texans-qb.png"></button>
-                <button id="button" class="wr player-button" value="6"><img
-                        src="./assets/images/texans-wr.png"></button>
-                <button id="button" class="rb player-button" value="7"><img
-                        src="./assets/images/texans-rb.png"></button>
-                <button id="button" class="k player-button" value="2"><img
-                        src="./assets/images/texans-k.png"></button>
+            <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group" role="group" aria-label="First group">
+                    <button id="button" class="qb player-button" value=""><img
+                            src="./assets/images/texans-qb.png"></button>
+                    <button id="button" class="wr player-button" value=""><img
+                            src="./assets/images/texans-wr.png" value=""></button>
+                    <button id="button" class="rb player-button"><img
+                            src="./assets/images/texans-rb.png" value=""></button>
+                    <button id="button" class="k player-button" value=""><img
+                            src="./assets/images/texans-k.png" value=""></button>
+                </div>
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // Displaying 4 clicked items as buttons
-            // Shows a target score at the start of the game
-            // Assigns a value to each button 
-            // Adds the value of the item to a score coutner
-            // User loses because they went over target score 
-            // User wins because target score = player score
-            // Game resets leaving the value for target score and items
-            // Player score resets to zero
-            // Total wins/losses are NOT reset 
-
-            // Define the variables
-            const target_score = 120
-            let player_score = 0
-            let total_wins
-
-            // Click functions for each button 
-            $(".player-button").on("click", function () {
-                // Assign a value of button to a new variable
-                let button_pts = parseInt($(this).attr("value"));
-                console.log(button_pts)
-                // 
-                player_score += button_pts;
-                if (player_score === target_score) {
-                    alert("Winner!")
-                    total_wins++ 
-                } else if (player_score >= target_score) {
-                    alert("Loser")
-                    total_wins--
-                }
-            });
-            function reset() {
-                player_score = 0;
-                
-                }
-            });
+    <script type="text/javascript" src="./assets/javascript/game.js">
     </script>
 </body>
 
